@@ -1,4 +1,5 @@
 # ExBankOfSticks
+[![Build Status](https://travis-ci.org/edwinthinks/ex_bank_of_sticks.svg?branch=master)](https://travis-ci.org/edwinthinks/ex_bank_of_sticks)
 
 An elixir application modeling a fictional Banking system that explodes anytime anything
 unexpected occurs... but has really good insurance!  A explosion can be triggered
