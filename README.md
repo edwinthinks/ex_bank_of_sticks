@@ -1,21 +1,12 @@
 # ExBankOfSticks
 
-**TODO: Add description**
+An elixir application modeling a fictional Banking system that explodes anytime anything
+unexpected occurs... but has really good insurance!  A explosion can be triggered
+if a client walks in and tries to deposit their cat instead of money. Even though these
+explosions melt the hard drives of the Bank computers they seem to always have an accurate
+balance of all their clients.
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_bank_of_sticks` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:ex_bank_of_sticks, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_bank_of_sticks](https://hexdocs.pm/ex_bank_of_sticks).
-
+This application features the fault tolerant capabilities of provided by Elixir +
+Erlang. It was intentionally constructed with the intention to make the application
+prone to crashes. For example, invalid user inputs can trigger a crash
+(see deposit cat example above).
