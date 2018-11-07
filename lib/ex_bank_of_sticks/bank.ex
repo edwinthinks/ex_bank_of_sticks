@@ -27,20 +27,26 @@ defmodule ExBankOfSticks.Bank do
     GenServer.call(:bank, {:withdraw, account, amount})
   end
 
-  def init(ledger \\ %{}) do
-    # Defined the state as a key/value store named as ledger
-    # for semantic clarity.
+  def init(_args) do
+    ledger = load_ledger()
     {:ok, ledger}
   end
 
   def handle_cast({:create_account, account, starting_balance}, ledger) do
-    {:noreply, Map.put(ledger, account, starting_balance)}
+    new_ledger = Map.put(ledger, account, starting_balance)
+    ExBankOfSticks.Insurance.store(new_ledger)
+
+    {:noreply, new_ledger}
   end
 
   def handle_cast({:deposit, account, amount}, ledger) do
     {:ok, current_balance} = Map.fetch(ledger, account)
     new_balance = current_balance + amount
-    {:noreply, Map.put(ledger, account, new_balance)}
+
+    new_ledger = Map.put(ledger, account, new_balance)
+    ExBankOfSticks.Insurance.store(new_ledger)
+
+    {:noreply, new_ledger}
   end
 
   def handle_call({:get_balance, account}, _requester, ledger) do
@@ -51,8 +57,15 @@ defmodule ExBankOfSticks.Bank do
     {:ok, current_balance} = Map.fetch(ledger, account)
     new_balance = current_balance - amount
 
+    new_ledger = Map.put(ledger, account, new_balance)
+    ExBankOfSticks.Insurance.store(new_ledger)
+
     # Note - I choose not to care about the balance dipping under 0!
-    {:reply, amount, Map.put(ledger, account, new_balance)}
+    {:reply, amount, new_ledger}
+  end
+
+  defp load_ledger do
+    ExBankOfSticks.Insurance.get
   end
 
 end
