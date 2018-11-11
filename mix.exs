@@ -1,4 +1,4 @@
-defmodule ExBankOfSticks.MixProject do
+defmodule FlammableElixirBank.MixProject do
   use Mix.Project
 
   def project do
@@ -15,7 +15,7 @@ defmodule ExBankOfSticks.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {ExBankOfSticks.Application, []}
+      mod: {FlammableElixirBank.Application, []}
     ]
   end
 

@@ -1,7 +1,7 @@
-defmodule ExBankOfSticks.InsuranceTest do
+defmodule FlammableElixirBank.InsuranceTest do
   use ExUnit.Case
 
-  import ExBankOfSticks.Insurance
+  import FlammableElixirBank.Insurance
 
   describe "store/1" do
     test "it stores the ledger data" do

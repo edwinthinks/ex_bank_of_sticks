@@ -1,4 +1,4 @@
-defmodule ExBankOfSticks.Bank do
+defmodule FlammableElixirBank.Bank do
   use GenServer
 
   def start_link(args) do
@@ -34,7 +34,7 @@ defmodule ExBankOfSticks.Bank do
 
   def handle_cast({:create_account, account, starting_balance}, ledger) do
     new_ledger = Map.put(ledger, account, starting_balance)
-    ExBankOfSticks.Insurance.store(new_ledger)
+    FlammableElixirBank.Insurance.store(new_ledger)
 
     {:noreply, new_ledger}
   end
@@ -44,7 +44,7 @@ defmodule ExBankOfSticks.Bank do
     new_balance = current_balance + amount
 
     new_ledger = Map.put(ledger, account, new_balance)
-    ExBankOfSticks.Insurance.store(new_ledger)
+    FlammableElixirBank.Insurance.store(new_ledger)
 
     {:noreply, new_ledger}
   end
@@ -58,14 +58,14 @@ defmodule ExBankOfSticks.Bank do
     new_balance = current_balance - amount
 
     new_ledger = Map.put(ledger, account, new_balance)
-    ExBankOfSticks.Insurance.store(new_ledger)
+    FlammableElixirBank.Insurance.store(new_ledger)
 
     # Note - I choose not to care about the balance dipping under 0!
     {:reply, amount, new_ledger}
   end
 
   defp load_ledger do
-    ExBankOfSticks.Insurance.get
+    FlammableElixirBank.Insurance.get
   end
 
 end

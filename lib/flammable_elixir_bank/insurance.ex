@@ -1,4 +1,4 @@
-defmodule ExBankOfSticks.Insurance do
+defmodule FlammableElixirBank.Insurance do
   use GenServer
 
   def start_link(args) do

@@ -1,7 +1,7 @@
-defmodule ExBankOfSticks.BankTest do
+defmodule FlammableElixirBank.BankTest do
   use ExUnit.Case
 
-  import ExBankOfSticks.Bank
+  import FlammableElixirBank.Bank
 
   describe "create_account/1" do
     test "stores the account with the starting balance" do

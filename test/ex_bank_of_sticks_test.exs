@@ -1,2 +1,0 @@
-defmodule ExBankOfSticksTest do
-end
